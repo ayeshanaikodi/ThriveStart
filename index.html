@@ -1,0 +1,2035 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        background-color: white;
+      }
+    </style>
+  </head>
+  <body
+    style="
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+    "
+  >
+    <div
+      style="
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 20px;
+      "
+    >
+      <div
+        style="
+          max-width: 1200px;
+          margin: 0 auto;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        "
+      >
+        <h1 style="margin: 0; font-size: 28px">ThriveStart</h1>
+        <div style="display: flex; align-items: center; gap: 10px">
+          <div
+            style="
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              background: #4caf50;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-weight: bold;
+            "
+          >
+            JS
+          </div>
+          <span>John Smith</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="max-width: 1200px; margin: 0 auto; padding: 20px">
+      <div
+        style="
+          background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+          color: white;
+          padding: 30px;
+          border-radius: 15px;
+          margin-bottom: 20px;
+        "
+      >
+        <h1 style="margin: 0 0 10px 0">Welcome back, John! 👋</h1>
+        <p style="margin: 0">
+          Your next care coordinator session is in 3 days. You have 4 new event
+          recommendations.
+        </p>
+      </div>
+
+      <div
+        style="
+          background: white;
+          padding: 15px;
+          border-radius: 10px;
+          margin-bottom: 20px;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        "
+      >
+        <button
+          onclick="showSection('dashboard')"
+          style="
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 20px;
+            cursor: pointer;
+          "
+        >
+          Dashboard
+        </button>
+        <button
+          onclick="showSection('events')"
+          style="
+            background: #f1f1f1;
+            color: #667eea;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 20px;
+            cursor: pointer;
+          "
+        >
+          Events
+        </button>
+        <button
+          onclick="showSection('resources')"
+          style="
+            background: #f1f1f1;
+            color: #667eea;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 20px;
+            cursor: pointer;
+          "
+        >
+          Resources
+        </button>
+        <button
+          onclick="showSection('network')"
+          style="
+            background: #f1f1f1;
+            color: #667eea;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 20px;
+            cursor: pointer;
+          "
+        >
+          Network
+        </button>
+        <button
+          onclick="showSection('calendar')"
+          style="
+            background: #f1f1f1;
+            color: #667eea;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 20px;
+            cursor: pointer;
+          "
+        >
+          Calendar
+        </button>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px">
+        <div>
+          <div
+            id="dashboard"
+            style="
+              background: white;
+              padding: 30px;
+              border-radius: 15px;
+              box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            "
+          >
+            <h2>Quick Actions</h2>
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+                margin-bottom: 30px;
+              "
+            >
+              <div
+                onclick="openModal('scheduleModal')"
+                style="
+                  background: #f8f9fa;
+                  padding: 20px;
+                  border-radius: 10px;
+                  text-align: center;
+                  cursor: pointer;
+                  border-top: 4px solid #667eea;
+                "
+              >
+                <div style="font-size: 40px; margin-bottom: 10px">📅</div>
+                <h3>Schedule Session</h3>
+                <p>Book with your care coordinator</p>
+              </div>
+              <div
+                onclick="openModal('createEventModal')"
+                style="
+                  background: #f8f9fa;
+                  padding: 20px;
+                  border-radius: 10px;
+                  text-align: center;
+                  cursor: pointer;
+                  border-top: 4px solid #667eea;
+                "
+              >
+                <div style="font-size: 40px; margin-bottom: 10px">🎯</div>
+                <h3>Create Event</h3>
+                <p>Organize a meetup</p>
+              </div>
+            </div>
+
+            <h2>Upcoming Events</h2>
+            <div
+              style="
+                background: #f9f9f9;
+                padding: 20px;
+                margin-bottom: 15px;
+                border-radius: 10px;
+                border-left: 5px solid #667eea;
+              "
+            >
+              <div
+                style="color: #667eea; font-weight: bold; margin-bottom: 5px"
+              >
+                May 15, 2026 • 6:00 PM
+              </div>
+              <h3 style="margin: 5px 0">Post-Grad Networking Mixer</h3>
+              <p style="color: #666; margin: 5px 0">
+                📍 Downtown Community Center
+              </p>
+              <p>Connect with other recent graduates in your area.</p>
+              <div style="margin: 10px 0">
+                <span
+                  style="
+                    background: #e3f2fd;
+                    color: #1565c0;
+                    padding: 4px 8px;
+                    border-radius: 15px;
+                    font-size: 12px;
+                    margin-right: 5px;
+                  "
+                  >Networking</span
+                >
+                <span
+                  style="
+                    background: #e3f2fd;
+                    color: #1565c0;
+                    padding: 4px 8px;
+                    border-radius: 15px;
+                    font-size: 12px;
+                  "
+                  >Career</span
+                >
+              </div>
+              <div style="margin-top: 15px">
+                <button
+                  onclick="rsvp(1, 'yes')"
+                  style="
+                    background: #28a745;
+                    color: white;
+                    border: none;
+                    padding: 8px 15px;
+                    margin: 3px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                  "
+                >
+                  ✓ Yes
+                </button>
+                <button
+                  onclick="rsvp(1, 'maybe')"
+                  style="
+                    background: #ffc107;
+                    color: black;
+                    border: none;
+                    padding: 8px 15px;
+                    margin: 3px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                  "
+                >
+                  ? Maybe
+                </button>
+                <button
+                  onclick="rsvp(1, 'no')"
+                  style="
+                    background: #dc3545;
+                    color: white;
+                    border: none;
+                    padding: 8px 15px;
+                    margin: 3px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                  "
+                >
+                  ✗ No
+                </button>
+              </div>
+            </div>
+
+            <div
+              style="
+                background: #f9f9f9;
+                padding: 20px;
+                margin-bottom: 15px;
+                border-radius: 10px;
+                border-left: 5px solid #667eea;
+              "
+            >
+              <div
+                style="color: #667eea; font-weight: bold; margin-bottom: 5px"
+              >
+                May 24, 2026 • 7:00 PM
+              </div>
+              <h3 style="margin: 5px 0">Bowling Night Social</h3>
+              <p style="color: #666; margin: 5px 0">📍 Kingpin Lanes</p>
+              <p>
+                Relax, meet new people, and enjoy a low-pressure social night.
+              </p>
+              <div style="margin: 10px 0">
+                <span
+                  style="
+                    background: #e3f2fd;
+                    color: #1565c0;
+                    padding: 4px 8px;
+                    border-radius: 15px;
+                    font-size: 12px;
+                    margin-right: 5px;
+                  "
+                  >Social</span
+                >
+                <span
+                  style="
+                    background: #e3f2fd;
+                    color: #1565c0;
+                    padding: 4px 8px;
+                    border-radius: 15px;
+                    font-size: 12px;
+                  "
+                  >Community</span
+                >
+              </div>
+              <div style="margin-top: 15px">
+                <button
+                  onclick="rsvp(4, 'yes')"
+                  style="
+                    background: #28a745;
+                    color: white;
+                    border: none;
+                    padding: 8px 15px;
+                    margin: 3px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                  "
+                >
+                  ✓ Yes
+                </button>
+                <button
+                  onclick="rsvp(4, 'maybe')"
+                  style="
+                    background: #ffc107;
+                    color: black;
+                    border: none;
+                    padding: 8px 15px;
+                    margin: 3px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                  "
+                >
+                  ? Maybe
+                </button>
+                <button
+                  onclick="rsvp(4, 'no')"
+                  style="
+                    background: #dc3545;
+                    color: white;
+                    border: none;
+                    padding: 8px 15px;
+                    margin: 3px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                  "
+                >
+                  ✗ No
+                </button>
+              </div>
+            </div>
+
+            <div
+              style="
+                background: #f9f9f9;
+                padding: 20px;
+                margin-bottom: 15px;
+                border-radius: 10px;
+                border-left: 5px solid #667eea;
+              "
+            >
+              <div
+                style="color: #667eea; font-weight: bold; margin-bottom: 5px"
+              >
+                May 30, 2026 • 8:30 AM
+              </div>
+              <h3 style="margin: 5px 0">Weekend Trail Hike</h3>
+              <p style="color: #666; margin: 5px 0">📍 Maple Ridge Trailhead</p>
+              <p>
+                Start your weekend outdoors with a beginner-friendly group hike.
+              </p>
+              <div style="margin: 10px 0">
+                <span
+                  style="
+                    background: #e3f2fd;
+                    color: #1565c0;
+                    padding: 4px 8px;
+                    border-radius: 15px;
+                    font-size: 12px;
+                    margin-right: 5px;
+                  "
+                  >Outdoors</span
+                >
+                <span
+                  style="
+                    background: #e3f2fd;
+                    color: #1565c0;
+                    padding: 4px 8px;
+                    border-radius: 15px;
+                    font-size: 12px;
+                  "
+                  >Wellness</span
+                >
+              </div>
+              <div style="margin-top: 15px">
+                <button
+                  onclick="rsvp(5, 'yes')"
+                  style="
+                    background: #28a745;
+                    color: white;
+                    border: none;
+                    padding: 8px 15px;
+                    margin: 3px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                  "
+                >
+                  ✓ Yes
+                </button>
+                <button
+                  onclick="rsvp(5, 'maybe')"
+                  style="
+                    background: #ffc107;
+                    color: black;
+                    border: none;
+                    padding: 8px 15px;
+                    margin: 3px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                  "
+                >
+                  ? Maybe
+                </button>
+                <button
+                  onclick="rsvp(5, 'no')"
+                  style="
+                    background: #dc3545;
+                    color: white;
+                    border: none;
+                    padding: 8px 15px;
+                    margin: 3px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                  "
+                >
+                  ✗ No
+                </button>
+              </div>
+            </div>
+
+            <div
+              style="
+                background: #f9f9f9;
+                padding: 20px;
+                margin-bottom: 15px;
+                border-radius: 10px;
+                border-left: 5px solid #667eea;
+              "
+            >
+              <div
+                style="color: #667eea; font-weight: bold; margin-bottom: 5px"
+              >
+                May 22, 2026 • 10:00 AM
+              </div>
+              <h3 style="margin: 5px 0">Mindful Mornings: Post-Grad Yoga</h3>
+              <p style="color: #666; margin: 5px 0">
+                📍 Riverside Park (South Lawn)
+              </p>
+              <p>
+                A low-stress yoga session focused on anxiety relief and
+                breathing techniques.
+              </p>
+              <div style="margin: 10px 0">
+                <span
+                  style="
+                    background: #e3f2fd;
+                    color: #1565c0;
+                    padding: 4px 8px;
+                    border-radius: 15px;
+                    font-size: 12px;
+                    margin-right: 5px;
+                  "
+                  >Wellness</span
+                >
+                <span
+                  style="
+                    background: #e3f2fd;
+                    color: #1565c0;
+                    padding: 4px 8px;
+                    border-radius: 15px;
+                    font-size: 12px;
+                  "
+                  >Mindfulness</span
+                >
+              </div>
+              <div style="margin-top: 15px">
+                <button
+                  onclick="rsvp(2, 'yes')"
+                  style="
+                    background: #28a745;
+                    color: white;
+                    border: none;
+                    padding: 8px 15px;
+                    margin: 3px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                  "
+                >
+                  ✓ Yes
+                </button>
+                <button
+                  onclick="rsvp(2, 'maybe')"
+                  style="
+                    background: #ffc107;
+                    color: black;
+                    border: none;
+                    padding: 8px 15px;
+                    margin: 3px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                  "
+                >
+                  ? Maybe
+                </button>
+                <button
+                  onclick="rsvp(2, 'no')"
+                  style="
+                    background: #dc3545;
+                    color: white;
+                    border: none;
+                    padding: 8px 15px;
+                    margin: 3px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                  "
+                >
+                  ✗ No
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            id="events"
+            style="
+              display: none;
+              background: white;
+              padding: 30px;
+              border-radius: 15px;
+              box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            "
+          >
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 20px;
+              "
+            >
+              <h2>All Events</h2>
+              <button
+                onclick="openModal('createEventModal')"
+                style="
+                  background: #667eea;
+                  color: white;
+                  border: none;
+                  padding: 10px 20px;
+                  border-radius: 5px;
+                  cursor: pointer;
+                "
+              >
+                Create Event
+              </button>
+            </div>
+
+            <div
+              style="
+                background: #f9f9f9;
+                padding: 20px;
+                margin-bottom: 15px;
+                border-radius: 10px;
+                border-left: 5px solid #667eea;
+              "
+            >
+              <h3>Post-Grad Networking Mixer</h3>
+              <p>May 15, 2026 • 6:00 PM</p>
+              <p>📍 Downtown Community Center</p>
+              <button
+                onclick="rsvp(1, 'yes')"
+                style="
+                  background: #28a745;
+                  color: white;
+                  border: none;
+                  padding: 8px 15px;
+                  margin: 3px;
+                  border-radius: 5px;
+                  cursor: pointer;
+                "
+              >
+                Yes
+              </button>
+              <button
+                onclick="rsvp(1, 'maybe')"
+                style="
+                  background: #ffc107;
+                  color: black;
+                  border: none;
+                  padding: 8px 15px;
+                  margin: 3px;
+                  border-radius: 5px;
+                  cursor: pointer;
+                "
+              >
+                Maybe
+              </button>
+              <button
+                onclick="rsvp(1, 'no')"
+                style="
+                  background: #dc3545;
+                  color: white;
+                  border: none;
+                  padding: 8px 15px;
+                  margin: 3px;
+                  border-radius: 5px;
+                  cursor: pointer;
+                "
+              >
+                No
+              </button>
+            </div>
+
+            <div
+              style="
+                background: #f9f9f9;
+                padding: 20px;
+                margin-bottom: 15px;
+                border-radius: 10px;
+                border-left: 5px solid #667eea;
+              "
+            >
+              <h3>Mindful Mornings: Post-Grad Yoga</h3>
+              <p>May 22, 2026 • 10:00 AM</p>
+              <p>📍 Riverside Park</p>
+              <button
+                onclick="rsvp(2, 'yes')"
+                style="
+                  background: #28a745;
+                  color: white;
+                  border: none;
+                  padding: 8px 15px;
+                  margin: 3px;
+                  border-radius: 5px;
+                  cursor: pointer;
+                "
+              >
+                Yes
+              </button>
+              <button
+                onclick="rsvp(2, 'maybe')"
+                style="
+                  background: #ffc107;
+                  color: black;
+                  border: none;
+                  padding: 8px 15px;
+                  margin: 3px;
+                  border-radius: 5px;
+                  cursor: pointer;
+                "
+              >
+                Maybe
+              </button>
+              <button
+                onclick="rsvp(2, 'no')"
+                style="
+                  background: #dc3545;
+                  color: white;
+                  border: none;
+                  padding: 8px 15px;
+                  margin: 3px;
+                  border-radius: 5px;
+                  cursor: pointer;
+                "
+              >
+                No
+              </button>
+            </div>
+
+            <div
+              style="
+                background: #f9f9f9;
+                padding: 20px;
+                margin-bottom: 15px;
+                border-radius: 10px;
+                border-left: 5px solid #667eea;
+              "
+            >
+              <h3>Finance & Freelancing Workshop</h3>
+              <p>May 5, 2026 • 5:30 PM</p>
+              <p>📍 Virtual Session (Zoom)</p>
+              <button
+                onclick="rsvp(3, 'yes')"
+                style="
+                  background: #28a745;
+                  color: white;
+                  border: none;
+                  padding: 8px 15px;
+                  margin: 3px;
+                  border-radius: 5px;
+                  cursor: pointer;
+                "
+              >
+                Yes
+              </button>
+              <button
+                onclick="rsvp(3, 'maybe')"
+                style="
+                  background: #ffc107;
+                  color: black;
+                  border: none;
+                  padding: 8px 15px;
+                  margin: 3px;
+                  border-radius: 5px;
+                  cursor: pointer;
+                "
+              >
+                Maybe
+              </button>
+              <button
+                onclick="rsvp(3, 'no')"
+                style="
+                  background: #dc3545;
+                  color: white;
+                  border: none;
+                  padding: 8px 15px;
+                  margin: 3px;
+                  border-radius: 5px;
+                  cursor: pointer;
+                "
+              >
+                No
+              </button>
+            </div>
+
+            <div
+              style="
+                background: #f9f9f9;
+                padding: 20px;
+                margin-bottom: 15px;
+                border-radius: 10px;
+                border-left: 5px solid #667eea;
+              "
+            >
+              <h3>Bowling Night Social</h3>
+              <p>May 24, 2026 • 7:00 PM</p>
+              <p>📍 Kingpin Lanes</p>
+              <button
+                onclick="rsvp(4, 'yes')"
+                style="
+                  background: #28a745;
+                  color: white;
+                  border: none;
+                  padding: 8px 15px;
+                  margin: 3px;
+                  border-radius: 5px;
+                  cursor: pointer;
+                "
+              >
+                Yes
+              </button>
+              <button
+                onclick="rsvp(4, 'maybe')"
+                style="
+                  background: #ffc107;
+                  color: black;
+                  border: none;
+                  padding: 8px 15px;
+                  margin: 3px;
+                  border-radius: 5px;
+                  cursor: pointer;
+                "
+              >
+                Maybe
+              </button>
+              <button
+                onclick="rsvp(4, 'no')"
+                style="
+                  background: #dc3545;
+                  color: white;
+                  border: none;
+                  padding: 8px 15px;
+                  margin: 3px;
+                  border-radius: 5px;
+                  cursor: pointer;
+                "
+              >
+                No
+              </button>
+            </div>
+
+            <div
+              style="
+                background: #f9f9f9;
+                padding: 20px;
+                margin-bottom: 15px;
+                border-radius: 10px;
+                border-left: 5px solid #667eea;
+              "
+            >
+              <h3>Weekend Trail Hike</h3>
+              <p>May 30, 2026 • 8:30 AM</p>
+              <p>📍 Maple Ridge Trailhead</p>
+              <button
+                onclick="rsvp(5, 'yes')"
+                style="
+                  background: #28a745;
+                  color: white;
+                  border: none;
+                  padding: 8px 15px;
+                  margin: 3px;
+                  border-radius: 5px;
+                  cursor: pointer;
+                "
+              >
+                Yes
+              </button>
+              <button
+                onclick="rsvp(5, 'maybe')"
+                style="
+                  background: #ffc107;
+                  color: black;
+                  border: none;
+                  padding: 8px 15px;
+                  margin: 3px;
+                  border-radius: 5px;
+                  cursor: pointer;
+                "
+              >
+                Maybe
+              </button>
+              <button
+                onclick="rsvp(5, 'no')"
+                style="
+                  background: #dc3545;
+                  color: white;
+                  border: none;
+                  padding: 8px 15px;
+                  margin: 3px;
+                  border-radius: 5px;
+                  cursor: pointer;
+                "
+              >
+                No
+              </button>
+            </div>
+
+            <div
+              style="
+                background: #f9f9f9;
+                padding: 20px;
+                margin-bottom: 15px;
+                border-radius: 10px;
+                border-left: 5px solid #667eea;
+              "
+            >
+              <h3>Board Games and Coffee Meetup</h3>
+              <p>June 2, 2026 • 6:30 PM</p>
+              <p>📍 Harbor Cafe</p>
+              <button
+                onclick="rsvp(6, 'yes')"
+                style="
+                  background: #28a745;
+                  color: white;
+                  border: none;
+                  padding: 8px 15px;
+                  margin: 3px;
+                  border-radius: 5px;
+                  cursor: pointer;
+                "
+              >
+                Yes
+              </button>
+              <button
+                onclick="rsvp(6, 'maybe')"
+                style="
+                  background: #ffc107;
+                  color: black;
+                  border: none;
+                  padding: 8px 15px;
+                  margin: 3px;
+                  border-radius: 5px;
+                  cursor: pointer;
+                "
+              >
+                Maybe
+              </button>
+              <button
+                onclick="rsvp(6, 'no')"
+                style="
+                  background: #dc3545;
+                  color: white;
+                  border: none;
+                  padding: 8px 15px;
+                  margin: 3px;
+                  border-radius: 5px;
+                  cursor: pointer;
+                "
+              >
+                No
+              </button>
+            </div>
+          </div>
+
+          <div
+            id="resources"
+            style="
+              display: none;
+              background: white;
+              padding: 30px;
+              border-radius: 15px;
+              box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            "
+          >
+            <h2>Resource Library</h2>
+            <div style="display: grid; grid-template-columns: 1fr; gap: 15px">
+              <div
+                style="background: #f9f9f9; padding: 20px; border-radius: 10px"
+              >
+                <span
+                  style="
+                    background: #e8f5e9;
+                    color: #2e7d32;
+                    padding: 2px 8px;
+                    border-radius: 10px;
+                    font-size: 11px;
+                    font-weight: bold;
+                  "
+                  >MENTAL HEALTH CARE</span
+                >
+                <h3>In-Network Mental Health Professionals</h3>
+                <p>
+                  List of therapists, counselors, and psychiatrists covered by
+                  your insurance plan with evening and telehealth availability.
+                </p>
+                <p style="margin: 6px 0; color: #555">
+                  Includes: anxiety support, post-grad adjustment, and stress
+                  management specialists.
+                </p>
+                <button
+                  style="
+                    background: #667eea;
+                    color: white;
+                    border: none;
+                    padding: 8px 15px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                  "
+                >
+                  View In-Network Providers
+                </button>
+              </div>
+
+              <div
+                style="background: #f9f9f9; padding: 20px; border-radius: 10px"
+              >
+                <span
+                  style="
+                    background: #e1f5fe;
+                    color: #0288d1;
+                    padding: 2px 8px;
+                    border-radius: 10px;
+                    font-size: 11px;
+                    font-weight: bold;
+                  "
+                  >TRANSITION</span
+                >
+                <h3>Workplace Transition Guide</h3>
+                <p>
+                  Navigate your first job with confidence and understand office
+                  dynamics.
+                </p>
+                <button
+                  style="
+                    background: #667eea;
+                    color: white;
+                    border: none;
+                    padding: 8px 15px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                  "
+                >
+                  View Resource
+                </button>
+              </div>
+              <div
+                style="background: #f9f9f9; padding: 20px; border-radius: 10px"
+              >
+                <span
+                  style="
+                    background: #fff3e0;
+                    color: #ef6c00;
+                    padding: 2px 8px;
+                    border-radius: 10px;
+                    font-size: 11px;
+                    font-weight: bold;
+                  "
+                  >MENTAL HEALTH</span
+                >
+                <h3>Combatting "Post-Grad Blues"</h3>
+                <p>
+                  Identifying symptoms of depression after leaving campus and
+                  how to find help.
+                </p>
+                <button
+                  style="
+                    background: #667eea;
+                    color: white;
+                    border: none;
+                    padding: 8px 15px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                  "
+                >
+                  View Resource
+                </button>
+              </div>
+              <div
+                style="background: #f9f9f9; padding: 20px; border-radius: 10px"
+              >
+                <span
+                  style="
+                    background: #e8f5e9;
+                    color: #2e7d32;
+                    padding: 2px 8px;
+                    border-radius: 10px;
+                    font-size: 11px;
+                    font-weight: bold;
+                  "
+                  >SOCIAL</span
+                >
+                <h3>Building Community After College</h3>
+                <p>
+                  Practical ways to meet new friends and overcome social
+                  isolation in a new city.
+                </p>
+                <button
+                  style="
+                    background: #667eea;
+                    color: white;
+                    border: none;
+                    padding: 8px 15px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                  "
+                >
+                  View Resource
+                </button>
+              </div>
+              <div
+                style="background: #f9f9f9; padding: 20px; border-radius: 10px"
+              >
+                <span
+                  style="
+                    background: #f3e5f5;
+                    color: #7b1fa2;
+                    padding: 2px 8px;
+                    border-radius: 10px;
+                    font-size: 11px;
+                    font-weight: bold;
+                  "
+                  >ANXIETY</span
+                >
+                <h3>Imposter Syndrome 101</h3>
+                <p>
+                  Tools for handling feelings of inadequacy in high-pressure
+                  entry-level roles.
+                </p>
+                <button
+                  style="
+                    background: #667eea;
+                    color: white;
+                    border: none;
+                    padding: 8px 15px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                  "
+                >
+                  View Resource
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            id="network"
+            style="
+              display: none;
+              background: white;
+              padding: 30px;
+              border-radius: 15px;
+              box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            "
+          >
+            <h2>Your Network</h2>
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+                background: #f8f9fa;
+                padding: 20px;
+                border-radius: 10px;
+                margin-bottom: 20px;
+              "
+            >
+              <div style="text-align: center">
+                <div style="font-size: 32px; font-weight: bold; color: #667eea">
+                  24
+                </div>
+                <div>Connections</div>
+              </div>
+              <div style="text-align: center">
+                <div style="font-size: 32px; font-weight: bold; color: #667eea">
+                  8
+                </div>
+                <div>Events Attended</div>
+              </div>
+            </div>
+            <div
+              style="
+                background: #f9f9f9;
+                padding: 15px;
+                border-radius: 10px;
+                margin-bottom: 10px;
+              "
+            >
+              <h4>Maria K.</h4>
+              <p>Connected at Networking Mixer</p>
+              <span
+                style="
+                  background: #e3f2fd;
+                  color: #1565c0;
+                  padding: 4px 8px;
+                  border-radius: 15px;
+                  font-size: 12px;
+                  margin-right: 5px;
+                "
+                >Career Development</span
+              >
+              <span
+                style="
+                  background: #e3f2fd;
+                  color: #1565c0;
+                  padding: 4px 8px;
+                  border-radius: 15px;
+                  font-size: 12px;
+                "
+                >Marketing</span
+              >
+              <div style="margin-top: 12px">
+                <button
+                  onclick="openModal('chatModal')"
+                  style="
+                    background: #667eea;
+                    color: white;
+                    border: none;
+                    padding: 8px 14px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                  "
+                >
+                  Chat
+                </button>
+              </div>
+            </div>
+
+            <div
+              style="
+                background: #f9f9f9;
+                padding: 15px;
+                border-radius: 10px;
+                margin-bottom: 10px;
+              "
+            >
+              <h4>Jordan P.</h4>
+              <p>Met at Mindful Mornings: Post-Grad Yoga</p>
+              <span
+                style="
+                  background: #e8f5e9;
+                  color: #2e7d32;
+                  padding: 4px 8px;
+                  border-radius: 15px;
+                  font-size: 12px;
+                  margin-right: 5px;
+                "
+                >Wellness</span
+              >
+              <span
+                style="
+                  background: #e8f5e9;
+                  color: #2e7d32;
+                  padding: 4px 8px;
+                  border-radius: 15px;
+                  font-size: 12px;
+                "
+                >Community</span
+              >
+              <div style="margin-top: 12px">
+                <button
+                  onclick="openModal('chatModal')"
+                  style="
+                    background: #667eea;
+                    color: white;
+                    border: none;
+                    padding: 8px 14px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                  "
+                >
+                  Chat
+                </button>
+              </div>
+            </div>
+
+            <div
+              style="
+                background: #f9f9f9;
+                padding: 15px;
+                border-radius: 10px;
+                margin-bottom: 10px;
+              "
+            >
+              <h4>Avery L.</h4>
+              <p>Connected through Finance & Freelancing Workshop</p>
+              <span
+                style="
+                  background: #fff3e0;
+                  color: #ef6c00;
+                  padding: 4px 8px;
+                  border-radius: 15px;
+                  font-size: 12px;
+                  margin-right: 5px;
+                "
+                >Finance</span
+              >
+              <span
+                style="
+                  background: #fff3e0;
+                  color: #ef6c00;
+                  padding: 4px 8px;
+                  border-radius: 15px;
+                  font-size: 12px;
+                "
+                >Freelancing</span
+              >
+              <div style="margin-top: 12px">
+                <button
+                  onclick="openModal('chatModal')"
+                  style="
+                    background: #667eea;
+                    color: white;
+                    border: none;
+                    padding: 8px 14px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                  "
+                >
+                  Chat
+                </button>
+              </div>
+            </div>
+
+            <div
+              style="
+                background: #f9f9f9;
+                padding: 15px;
+                border-radius: 10px;
+                margin-bottom: 10px;
+              "
+            >
+              <h4>Riley N.</h4>
+              <p>Introduced by your care coordinator</p>
+              <span
+                style="
+                  background: #e1f5fe;
+                  color: #0288d1;
+                  padding: 4px 8px;
+                  border-radius: 15px;
+                  font-size: 12px;
+                  margin-right: 5px;
+                "
+                >Career Growth</span
+              >
+              <span
+                style="
+                  background: #e1f5fe;
+                  color: #0288d1;
+                  padding: 4px 8px;
+                  border-radius: 15px;
+                  font-size: 12px;
+                "
+                >Tech</span
+              >
+              <div style="margin-top: 12px">
+                <button
+                  onclick="openModal('chatModal')"
+                  style="
+                    background: #667eea;
+                    color: white;
+                    border: none;
+                    padding: 8px 14px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                  "
+                >
+                  Chat
+                </button>
+              </div>
+            </div>
+
+            <div
+              style="
+                background: #f9f9f9;
+                padding: 15px;
+                border-radius: 10px;
+                margin-bottom: 10px;
+              "
+            >
+              <h4>Samira T.</h4>
+              <p>Met at Building Community meetup group</p>
+              <span
+                style="
+                  background: #f3e5f5;
+                  color: #7b1fa2;
+                  padding: 4px 8px;
+                  border-radius: 15px;
+                  font-size: 12px;
+                  margin-right: 5px;
+                "
+                >Social</span
+              >
+              <span
+                style="
+                  background: #f3e5f5;
+                  color: #7b1fa2;
+                  padding: 4px 8px;
+                  border-radius: 15px;
+                  font-size: 12px;
+                "
+                >Support Circle</span
+              >
+              <div style="margin-top: 12px">
+                <button
+                  onclick="openModal('chatModal')"
+                  style="
+                    background: #667eea;
+                    color: white;
+                    border: none;
+                    padding: 8px 14px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                  "
+                >
+                  Chat
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            id="calendar"
+            style="
+              display: none;
+              background: white;
+              padding: 30px;
+              border-radius: 15px;
+              box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            "
+          >
+            <h2>Your Calendar</h2>
+            <div id="calendar-events">
+              <div
+                style="
+                  background: #e8f5e8;
+                  padding: 15px;
+                  border-radius: 10px;
+                  margin-bottom: 10px;
+                "
+              >
+                <h4>May 17, 2026 - Care Coordinator Session</h4>
+                <p>📹 Video call with Sarah Rodriguez at 2:00 PM</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div
+            style="
+              background: white;
+              padding: 25px;
+              border-radius: 15px;
+              box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+              margin-bottom: 20px;
+              text-align: center;
+            "
+          >
+            <h3>Your Care Coordinator</h3>
+            <div
+              style="
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                background: linear-gradient(135deg, #667eea, #764ba2);
+                margin: 0 auto 15px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 30px;
+                font-weight: bold;
+              "
+            >
+              SR
+            </div>
+            <div style="font-size: 20px; font-weight: bold; margin-bottom: 5px">
+              Sarah Rodriguez
+            </div>
+            <div style="color: #666; margin-bottom: 20px">
+              Resource Specialist & Life Coach
+            </div>
+            <button
+              onclick="openModal('chatModal')"
+              style="
+                background: #667eea;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                width: 100%;
+                margin-bottom: 10px;
+                border-radius: 5px;
+                cursor: pointer;
+              "
+            >
+              💬 Send Message
+            </button>
+            <button
+              onclick="openModal('scheduleModal')"
+              style="
+                background: #6c757d;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                width: 100%;
+                border-radius: 5px;
+                cursor: pointer;
+              "
+            >
+              📅 Schedule Session
+            </button>
+          </div>
+
+          <div
+            style="
+              background: white;
+              padding: 25px;
+              border-radius: 15px;
+              box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            "
+          >
+            <h3>Your Interest Tags</h3>
+            <div style="margin-bottom: 15px">
+              <span
+                style="
+                  background: #e3f2fd;
+                  color: #1565c0;
+                  padding: 4px 8px;
+                  border-radius: 15px;
+                  font-size: 12px;
+                  margin: 3px;
+                  display: inline-block;
+                "
+                >Career Development</span
+              >
+              <span
+                style="
+                  background: #e3f2fd;
+                  color: #1565c0;
+                  padding: 4px 8px;
+                  border-radius: 15px;
+                  font-size: 12px;
+                  margin: 3px;
+                  display: inline-block;
+                "
+                >Technology</span
+              >
+              <span
+                style="
+                  background: #e3f2fd;
+                  color: #1565c0;
+                  padding: 4px 8px;
+                  border-radius: 15px;
+                  font-size: 12px;
+                  margin: 3px;
+                  display: inline-block;
+                "
+                >Fitness</span
+              >
+              <span
+                style="
+                  background: #e3f2fd;
+                  color: #1565c0;
+                  padding: 4px 8px;
+                  border-radius: 15px;
+                  font-size: 12px;
+                  margin: 3px;
+                  display: inline-block;
+                "
+                >Photography</span
+              >
+              <span
+                style="
+                  background: #e3f2fd;
+                  color: #1565c0;
+                  padding: 4px 8px;
+                  border-radius: 15px;
+                  font-size: 12px;
+                  margin: 3px;
+                  display: inline-block;
+                "
+                >Mindfulness</span
+              >
+              <span
+                style="
+                  background: #e3f2fd;
+                  color: #1565c0;
+                  padding: 4px 8px;
+                  border-radius: 15px;
+                  font-size: 12px;
+                  margin: 3px;
+                  display: inline-block;
+                "
+                >Networking</span
+              >
+            </div>
+            <button
+              onclick="alert('Edit interests')"
+              style="
+                background: #6c757d;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                width: 100%;
+                border-radius: 5px;
+                cursor: pointer;
+              "
+            >
+              Edit Interests
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="createEventModal"
+      style="
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+      "
+    >
+      <div
+        style="
+          background-color: white;
+          margin: 10% auto;
+          padding: 30px;
+          border-radius: 10px;
+          width: 80%;
+          max-width: 500px;
+        "
+      >
+        <span
+          onclick="closeModal('createEventModal')"
+          style="
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+          "
+          >&times;</span
+        >
+        <h3>Create New Event</h3>
+        <input
+          type="text"
+          placeholder="Event Title"
+          style="
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+          "
+        />
+        <textarea
+          placeholder="Description"
+          style="
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            height: 80px;
+          "
+        ></textarea>
+        <input
+          type="datetime-local"
+          style="
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+          "
+        />
+        <input
+          type="text"
+          placeholder="Location"
+          style="
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+          "
+        />
+        <button
+          onclick="createEvent()"
+          style="
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+          "
+        >
+          Create Event
+        </button>
+        <button
+          onclick="closeModal('createEventModal')"
+          style="
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+          "
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+
+    <div
+      id="scheduleModal"
+      style="
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+      "
+    >
+      <div
+        style="
+          background-color: white;
+          margin: 10% auto;
+          padding: 30px;
+          border-radius: 10px;
+          width: 80%;
+          max-width: 500px;
+        "
+      >
+        <span
+          onclick="closeModal('scheduleModal')"
+          style="
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+          "
+          >&times;</span
+        >
+        <h3>Schedule Video Call Session</h3>
+        <input
+          type="date"
+          id="sessionDate"
+          style="
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+          "
+        />
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 15px 0;
+          "
+        >
+          <button
+            onclick="selectTime(this)"
+            style="
+              background: #f1f1f1;
+              border: 1px solid #ddd;
+              padding: 10px;
+              border-radius: 5px;
+              cursor: pointer;
+            "
+          >
+            9:00 AM
+          </button>
+          <button
+            onclick="selectTime(this)"
+            style="
+              background: #f1f1f1;
+              border: 1px solid #ddd;
+              padding: 10px;
+              border-radius: 5px;
+              cursor: pointer;
+            "
+          >
+            10:00 AM
+          </button>
+          <button
+            onclick="selectTime(this)"
+            style="
+              background: #f1f1f1;
+              border: 1px solid #ddd;
+              padding: 10px;
+              border-radius: 5px;
+              cursor: pointer;
+            "
+          >
+            2:00 PM
+          </button>
+        </div>
+        <button
+          onclick="bookSession()"
+          style="
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+          "
+        >
+          Book Session
+        </button>
+      </div>
+    </div>
+
+    <div
+      id="chatModal"
+      style="
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+      "
+    >
+      <div
+        style="
+          background-color: white;
+          margin: 5% auto;
+          padding: 30px;
+          border-radius: 10px;
+          width: 80%;
+          max-width: 600px;
+        "
+      >
+        <span
+          onclick="closeModal('chatModal')"
+          style="
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+          "
+          >&times;</span
+        >
+        <h3>Chat with Sarah Rodriguez</h3>
+        <div
+          id="chatArea"
+          style="
+            height: 300px;
+            border: 1px solid #ddd;
+            padding: 15px;
+            overflow-y: auto;
+            background: #f9f9f9;
+            margin: 15px 0;
+            border-radius: 5px;
+          "
+        >
+          <div
+            style="
+              margin: 10px 0;
+              padding: 10px;
+              border-radius: 10px;
+              background: white;
+              border: 1px solid #ddd;
+            "
+          >
+            <strong>Sarah Rodriguez:</strong> Hi John! Any workplace challenges
+            I can help you with today?
+          </div>
+        </div>
+        <div style="display: flex; gap: 10px">
+          <input
+            type="text"
+            id="chatInput"
+            placeholder="Type your message..."
+            style="
+              flex: 1;
+              padding: 10px;
+              border: 1px solid #ddd;
+              border-radius: 5px;
+            "
+          />
+          <button
+            onclick="sendMessage()"
+            style="
+              background: #667eea;
+              color: white;
+              border: none;
+              padding: 10px 20px;
+              border-radius: 5px;
+              cursor: pointer;
+            "
+          >
+            Send
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let selectedTime = null;
+      const eventDetails = {
+        1: {
+          title: "Post-Grad Networking Mixer",
+          dateTime: "May 15, 2026 • 6:00 PM",
+          location: "Downtown Community Center",
+        },
+        2: {
+          title: "Mindful Mornings: Post-Grad Yoga",
+          dateTime: "May 22, 2026 • 10:00 AM",
+          location: "Riverside Park",
+        },
+        3: {
+          title: "Finance & Freelancing Workshop",
+          dateTime: "May 5, 2026 • 5:30 PM",
+          location: "Virtual Session (Zoom)",
+        },
+        4: {
+          title: "Bowling Night Social",
+          dateTime: "May 24, 2026 • 7:00 PM",
+          location: "Kingpin Lanes",
+        },
+        5: {
+          title: "Weekend Trail Hike",
+          dateTime: "May 30, 2026 • 8:30 AM",
+          location: "Maple Ridge Trailhead",
+        },
+        6: {
+          title: "Board Games and Coffee Meetup",
+          dateTime: "June 2, 2026 • 6:30 PM",
+          location: "Harbor Cafe",
+        },
+      };
+      const calendarRsvpEvents = {};
+
+      function showSection(sectionName) {
+        document.getElementById("dashboard").style.display = "none";
+        document.getElementById("events").style.display = "none";
+        document.getElementById("resources").style.display = "none";
+        document.getElementById("network").style.display = "none";
+        document.getElementById("calendar").style.display = "none";
+        document.getElementById(sectionName).style.display = "block";
+      }
+
+      function openModal(modalId) {
+        document.getElementById(modalId).style.display = "block";
+      }
+
+      function closeModal(modalId) {
+        document.getElementById(modalId).style.display = "none";
+      }
+
+      function rsvp(eventId, response) {
+        const eventInfo = eventDetails[eventId];
+        if (!eventInfo) {
+          alert('RSVP "' + response + '" recorded!');
+          return;
+        }
+
+        if (response === "yes" || response === "maybe") {
+          calendarRsvpEvents[eventId] = {
+            ...eventInfo,
+            response: response,
+          };
+        } else {
+          delete calendarRsvpEvents[eventId];
+        }
+
+        renderCalendarEvents();
+        alert(
+          'RSVP "' +
+            response +
+            '" recorded for ' +
+            eventInfo.title +
+            ". Calendar updated.",
+        );
+      }
+
+      function renderCalendarEvents() {
+        const calendarContainer = document.getElementById("calendar-events");
+        if (!calendarContainer) return;
+
+        const existingRsvpCards = calendarContainer.querySelectorAll(
+          ".rsvp-calendar-card",
+        );
+        existingRsvpCards.forEach((card) => card.remove());
+
+        Object.values(calendarRsvpEvents).forEach((eventData) => {
+          const card = document.createElement("div");
+          card.className = "rsvp-calendar-card";
+          card.style.cssText =
+            "background: #fff8e1; padding: 15px; border-radius: 10px; margin-bottom: 10px; border-left: 5px solid #ffb300;";
+
+          const heading = document.createElement("h4");
+          heading.textContent = eventData.dateTime + " - " + eventData.title;
+
+          const detail = document.createElement("p");
+          detail.textContent =
+            "📍 " +
+            eventData.location +
+            " • RSVP: " +
+            eventData.response.toUpperCase();
+
+          card.appendChild(heading);
+          card.appendChild(detail);
+          calendarContainer.appendChild(card);
+        });
+      }
+
+      function selectTime(timeBtn) {
+        const timeButtons = timeBtn.parentNode.querySelectorAll("button");
+        timeButtons.forEach((btn) => (btn.style.background = "#f1f1f1"));
+        timeBtn.style.background = "#28a745";
+        timeBtn.style.color = "white";
+        selectedTime = timeBtn.textContent;
+      }
+
+      function bookSession() {
+        alert("Session booked for " + selectedTime + "!");
+        closeModal("scheduleModal");
+      }
+
+      function sendMessage() {
+        const input = document.getElementById("chatInput");
+        const message = input.value.trim();
+        if (message) {
+          const chatArea = document.getElementById("chatArea");
+          const messageDiv = document.createElement("div");
+          messageDiv.style.cssText =
+            "margin: 10px 0; padding: 10px; border-radius: 10px; background: #667eea; color: white; text-align: right;";
+          messageDiv.innerHTML = "<strong>You:</strong> " + message;
+          chatArea.appendChild(messageDiv);
+          input.value = "";
+        }
+      }
+
+      function createEvent() {
+        alert("Event created successfully!");
+        closeModal("createEventModal");
+      }
+    </script>
+  </body>
+</html>
